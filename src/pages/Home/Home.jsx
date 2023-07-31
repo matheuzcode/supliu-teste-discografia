@@ -7,10 +7,12 @@ import Api from '../../Api.js'
 import './Home.css';
 
 const Home = () => {
-	
+
 	const [albumHover, setAlbumHover] = useState(false);
 	const [addAlbumModal, setAddAlbumModal] = useState(false);
 	const [albumData, setAlbumData] = useState([]);
+	const [newAlbumName, setNewAlbumName] = useState('');
+  	const [newAlbumYear, setNewAlbumYear] = useState('');
 
   useEffect(() => {
     async function fetchAlbumData() {
@@ -23,9 +25,21 @@ const Home = () => {
         console.error(error.message);
       }
     }
-
-    fetchAlbumData();
+	
+	fetchAlbumData();
   }, []);
+
+  async function postAlbumData() {
+    try {
+      const newAlbum = await Api.postAlbum({ name: newAlbumName, year: newAlbumYear });
+      setAlbumData([...albumData, newAlbum]);
+      setNewAlbumName(''); // Limpa o campo do nome do álbum após adicionar
+      setNewAlbumYear(''); // Limpa o campo do ano do álbum após adicionar
+      setAddAlbumModal(false); // Fecha o modal de adição de álbum após adicionar
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 
 	return (
 	<>
@@ -45,17 +59,20 @@ const Home = () => {
 				</div>
 				<div className="addAlbumModal" style={addAlbumModal ? {display: "flex"} : {display: "none"}}>
 					<div className="closeButton" onClick={() => setAddAlbumModal(false)}><TiDelete/></div>
-					<input type="text" placeholder="Nome do album"/>
-					<input type="number" placeholder="Ano do album"/>
-					<button>Adicionar</button>
+					<input type="text" placeholder="Nome do album" value={newAlbumName} onChange={(e) => setNewAlbumName(e.target.value)}/>
+					<input type="number" placeholder="Ano do album" value={newAlbumYear} onChange={(e) => setNewAlbumYear(e.target.value)}/>
+					<button onClick={postAlbumData}>Adicionar</button>
 				</div>
 				<div className="addPlaylistButton" onClick={() => setAddAlbumModal(true)}>
 					<IoMdAddCircle />
 				</div>
-				{albumData.map((item, index) => (
-					<Albuns album={item} key={index}/>
-				))}
-				
+				{albumData ? (
+			      albumData.map((item, index) => (
+			        <Albuns album={item} key={index} />
+			      ))
+			    ) : (
+			      <div>Carregando...</div>
+			    )}				
 			</div>
 		</div>	
 		</div>	

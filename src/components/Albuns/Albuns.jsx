@@ -38,8 +38,8 @@ const Albuns = ({album, index}) => {
 				<div>Duração</div>
 			</div>
 			
-			{album.tracks.map(album => (
-				<div className="col-2">
+			{album?.tracks?.map((album, index) => (
+				<div className="col-2" key={index}>
 					<div className="trackNumber">{album.number}</div>
 					<div className="trackName">{album.title}</div>
 					<div className="trackDelete" onClick={() => window.confirm("Você realmente deseja apagar essa música?")}><MdDelete/></div>
