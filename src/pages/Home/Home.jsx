@@ -2,10 +2,12 @@ import logo from '../../assets/logo.png';
 import {useState} from 'react';
 import Albuns from '../../components/Albuns/Albuns.jsx'
 import { IoMdAddCircle } from 'react-icons/io';
+import { TiDelete } from 'react-icons/ti';
 import './Home.css';
 
 const Home = () => {
 	const [albumHover, setAlbumHover] = useState(false);
+	const [addAlbumModal, setaddAlbumModal] = useState(false);
 
 	const data = [
 		{
@@ -72,7 +74,13 @@ const Home = () => {
 						<button>Procurar</button>
 					</div>
 				</div>
-				<div className="addPlaylistButton">
+				<div className="addAlbumModal" style={addAlbumModal ? {display: "flex"} : {display: "none"}}>
+					<div className="closeButton" onClick={() => setaddAlbumModal(false)}><TiDelete/></div>
+					<input type="text" placeholder="Nome do album"/>
+					<input type="text" placeholder="Ano do album"/>
+					<button>Adicionar</button>
+				</div>
+				<div className="addPlaylistButton" onClick={() => setaddAlbumModal(true)}>
 					<IoMdAddCircle />
 				</div>
 				{data.map(data => (

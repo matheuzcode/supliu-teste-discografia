@@ -11,8 +11,8 @@ const Albuns = ({data}) => {
 		<div className="album">
 			<div className="albumTitle">
 			{data.name}
-			<TbPlaylistAdd className="addTrackIcon"/>
-			<MdDelete className="deleteTrackIcon"/>
+			<TbPlaylistAdd className="addTrackIcon" />
+			<MdDelete className="deleteTrackIcon" onClick={() => window.confirm("Você realmente deseja apagar esse album?")}/>
 			</div>
 			
 			<div className="col-1">
