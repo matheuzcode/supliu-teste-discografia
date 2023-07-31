@@ -1,0 +1,75 @@
+.album{
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 0 30px;
+	margin-top: 20px;
+}
+
+
+.addTrackIcon{
+	font-size: 20px;
+    background-color: #b5b5b56b;
+    border-radius: 50%;
+    padding: 5px;
+    transition: background-color ease 0.3s;
+    cursor: pointer;
+}
+
+.addTrackIcon:hover{
+	background-color: #b5b5b5a8;
+}
+
+.deleteTrackIcon{
+	font-size: 20px;
+    background-color: #b5b5b56b;
+    border-radius: 50%;
+    padding: 5px;
+    transition: background-color ease 0.3s;
+    cursor: pointer;
+}
+
+.deleteTrackIcon:hover{
+	background-color: #b5b5b5a8;
+}
+
+.albumTitle{
+	font-weight: bold;
+	display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.col-1, .col-2{
+	color: #333232;
+}
+
+.col-1 {
+	display: grid;
+    grid-template-columns: 1fr 12fr 1fr;
+}
+
+.col-2 {
+	display: grid;
+    grid-template-columns: 1fr 12fr 1fr 1fr;
+    align-items: center;
+    transition: background-color ease 0.2s;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.col-2:hover{
+	background-color: #70707038;
+}
+
+.trackDelete{
+	display: grid;
+	font-size: 18px;
+	cursor: pointer;
+	transition: color ease 0.3;
+}
+
+.trackDelete:hover{
+	color: #cd2323;;
+}
+
