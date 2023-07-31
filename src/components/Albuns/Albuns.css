@@ -73,3 +73,43 @@
 	color: #cd2323;;
 }
 
+.addAlbumModal{
+	display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 15px;
+    background-color: white;
+    padding: 35px 20px 10px;
+    box-shadow: 0px 5px 9px 0px #6e6e6e85;
+}
+
+.addAlbumModal input {
+	padding: 10px;
+    outline: none;
+    border: solid 1px #4A90E2;
+}
+
+.addAlbumModal button {
+	width: 86px;
+    padding: 9px;
+    border: none;
+    background-color: #4A90E2;
+    color: white;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.closeButton{
+	font-size: 25px;
+    color: red;
+    position: absolute;
+    right: 7px;
+    top: 1px;
+    cursor: pointer;
+}
+
+

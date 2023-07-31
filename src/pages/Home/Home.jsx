@@ -7,7 +7,7 @@ import './Home.css';
 
 const Home = () => {
 	const [albumHover, setAlbumHover] = useState(false);
-	const [addAlbumModal, setaddAlbumModal] = useState(false);
+	const [addAlbumModal, setAddAlbumModal] = useState(false);
 
 	const data = [
 		{
@@ -75,12 +75,12 @@ const Home = () => {
 					</div>
 				</div>
 				<div className="addAlbumModal" style={addAlbumModal ? {display: "flex"} : {display: "none"}}>
-					<div className="closeButton" onClick={() => setaddAlbumModal(false)}><TiDelete/></div>
+					<div className="closeButton" onClick={() => setAddAlbumModal(false)}><TiDelete/></div>
 					<input type="text" placeholder="Nome do album"/>
-					<input type="text" placeholder="Ano do album"/>
+					<input type="number" placeholder="Ano do album"/>
 					<button>Adicionar</button>
 				</div>
-				<div className="addPlaylistButton" onClick={() => setaddAlbumModal(true)}>
+				<div className="addPlaylistButton" onClick={() => setAddAlbumModal(true)}>
 					<IoMdAddCircle />
 				</div>
 				{data.map(data => (
