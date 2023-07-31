@@ -1,62 +1,31 @@
 import logo from '../../assets/logo.png';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Albuns from '../../components/Albuns/Albuns.jsx'
 import { IoMdAddCircle } from 'react-icons/io';
 import { TiDelete } from 'react-icons/ti';
+import Api from '../../Api.js'
 import './Home.css';
 
 const Home = () => {
+	
 	const [albumHover, setAlbumHover] = useState(false);
 	const [addAlbumModal, setAddAlbumModal] = useState(false);
+	const [albumData, setAlbumData] = useState([]);
 
-	const data = [
-		{
-			"name": "Rei do Gado",
-			"year": "1991",
-			"tracks": [
-				{
-				"number": "1",
-				"title": "Borboleta",
-				"duration": "120"
-				},
-				{
-				"number": "2",
-				"title": "Abelha",
-				"duration": "42"
-				},
-				{
-				"number": "3",
-				"title": "Aranha",
-				"duration": "23"
-				},
+  useEffect(() => {
+    async function fetchAlbumData() {
+      try {
+        const albumData = await Api.getAlbum();
+        setAlbumData(albumData);
+        console.log(albumData)
+      } catch (error) {
+        // Tratar erro, se necessário
+        console.error(error.message);
+      }
+    }
 
-			]
-		},
-		{
-			"name": "Rei do Gado",
-			"year": "1991",
-			"tracks": [
-				{
-				"number": "1",
-				"title": "Borboleta",
-				"duration": "36"
-				},
-				{
-				"number": "2",
-				"title": "Abelha",
-				"duration": "42"
-				},
-				{
-				"number": "3",
-				"title": "Aranha",
-				"duration": "23"
-				},
-
-			]
-		},
-		
-
-	]
+    fetchAlbumData();
+  }, []);
 
 	return (
 	<>
@@ -83,8 +52,8 @@ const Home = () => {
 				<div className="addPlaylistButton" onClick={() => setAddAlbumModal(true)}>
 					<IoMdAddCircle />
 				</div>
-				{data.map(data => (
-					<Albuns data={data}/>
+				{albumData.map((item, index) => (
+					<Albuns album={item} key={index}/>
 				))}
 				
 			</div>

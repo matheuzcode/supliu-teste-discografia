@@ -4,7 +4,7 @@ import { MdDelete } from 'react-icons/md';
 import { TiDelete } from 'react-icons/ti';
 import {useState} from 'react';
 
-const Albuns = ({data}) => {
+const Albuns = ({album, index}) => {
 	const [addTrackModal, setAddTrackModal] = useState(false);
 
 	const formatMinutes = (seconds) => {
@@ -16,14 +16,13 @@ const Albuns = ({data}) => {
 		} else {
 			return minutes + " : " + minutesLeft;
 		}
-
 		
 	}
 	return (
 	
 		<div className="album">
 			<div className="albumTitle">
-			{data.name}
+			{album.name}, {album.year}
 			<TbPlaylistAdd className="addTrackIcon" onClick={() => setAddTrackModal(true)}/>
 			<MdDelete className="deleteTrackIcon" onClick={() => window.confirm("Você realmente deseja apagar esse album?")}/>
 			</div>
@@ -39,12 +38,12 @@ const Albuns = ({data}) => {
 				<div>Duração</div>
 			</div>
 			
-			{data.tracks.map(data => (
+			{album.tracks.map(album => (
 				<div className="col-2">
-					<div className="trackNumber">{data.number}</div>
-					<div className="trackName">{data.title}</div>
+					<div className="trackNumber">{album.number}</div>
+					<div className="trackName">{album.title}</div>
 					<div className="trackDelete" onClick={() => window.confirm("Você realmente deseja apagar essa música?")}><MdDelete/></div>
-					<div className="trackDuration">{formatMinutes(data.duration)}</div>
+					<div className="trackDuration">{formatMinutes(album.duration)}</div>
 				</div>	
 			))}
 				
