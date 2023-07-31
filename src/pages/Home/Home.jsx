@@ -17,7 +17,7 @@ const Home = () => {
 				{
 				"number": "1",
 				"title": "Borboleta",
-				"duration": "36"
+				"duration": "120"
 				},
 				{
 				"number": "2",

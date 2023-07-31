@@ -7,6 +7,18 @@ import {useState} from 'react';
 const Albuns = ({data}) => {
 	const [addTrackModal, setAddTrackModal] = useState(false);
 
+	const formatMinutes = (seconds) => {
+		const minutes = Math.floor(seconds / 60);
+		const minutesLeft = seconds % 60;
+
+		if(minutesLeft < 10) {
+			return minutes + " : " + 0 + minutesLeft;
+		} else {
+			return minutes + " : " + minutesLeft;
+		}
+
+		
+	}
 	return (
 	
 		<div className="album">
@@ -32,7 +44,7 @@ const Albuns = ({data}) => {
 					<div className="trackNumber">{data.number}</div>
 					<div className="trackName">{data.title}</div>
 					<div className="trackDelete" onClick={() => window.confirm("Você realmente deseja apagar essa música?")}><MdDelete/></div>
-					<div className="trackDuration">{data.duration}</div>
+					<div className="trackDuration">{formatMinutes(data.duration)}</div>
 				</div>	
 			))}
 				
