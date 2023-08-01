@@ -83,7 +83,7 @@ const Albuns = ({album, index, albumData, setAlbumData}) => {
 			</div>
 			
 			{album?.tracks?.map((faixa, index) => (
-				<Faixas faixa={faixa} key={index}/>	
+				<Faixas faixa={faixa} key={index} setAlbumData={setAlbumData}/>	
 			))}
 				
 		</div>	

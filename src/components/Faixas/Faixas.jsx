@@ -1,7 +1,8 @@
 import { MdDelete } from 'react-icons/md';
+import Api from '../../Api.js'
 import './Faixas.css';
 
-const Faixas = ({faixa, index}) => {
+const Faixas = ({faixa, index, setAlbumData}) => {
 
 	const formatMinutes = (seconds) => {
 		const minutes = Math.floor(seconds / 60);
@@ -14,12 +15,19 @@ const Faixas = ({faixa, index}) => {
 		}
 		
 	}
+
+	const deleteTrackId = () => {
+		let confirmation = window.confirm("Você tem certeza que deseja excluir essa faixa?")
+		if(confirmation){
+			Api.deleteTrack(faixa.id, setAlbumData);
+		}
+	}
 	
 	return (
 		<div className="col-2">
 			<div className="trackNumber">{faixa.number}</div>
 			<div className="trackName">{faixa.title}</div>
-			<div className="trackDelete" onClick={() => window.confirm("Você realmente deseja apagar essa música?")}><MdDelete/></div>
+			<div className="trackDelete" onClick={deleteTrackId}><MdDelete/></div>
 			<div className="trackDuration">{formatMinutes(faixa.duration)}</div>
 		</div>	
 	)
