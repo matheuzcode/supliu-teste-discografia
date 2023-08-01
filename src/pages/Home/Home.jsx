@@ -13,6 +13,8 @@ const Home = () => {
 	const [albumData, setAlbumData] = useState([]);
 	const [newAlbumName, setNewAlbumName] = useState('');
   	const [newAlbumYear, setNewAlbumYear] = useState('');
+  	const [searchTermTemp, setSearchTermTemp] = useState('');
+  	const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function fetchAlbumData() {
@@ -40,6 +42,26 @@ const Home = () => {
     }
   }
 
+	const filterAlbumsAndTracks = (albums, searchTerm) => {
+	    return albums.filter((album) => {
+	      // Filtra os álbuns
+	      const albumMatches = album.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+	      // Filtra as faixas
+	      const tracksMatches = album.tracks.some((track) =>
+	        track.title.toLowerCase().includes(searchTerm.toLowerCase())
+	      );
+
+	      return albumMatches || tracksMatches;
+	    });
+	};
+
+	const handleSearchClick = () => {
+    	setSearchTerm(searchTermTemp); 
+  	};
+
+	const filteredAlbumData = filterAlbumsAndTracks(albumData, searchTerm);
+
 	return (
 	<>
 		<div className="container">
@@ -52,8 +74,9 @@ const Home = () => {
 				<div className="albumSearch">
 					<div className="searchText">Digite uma palavra chave</div>
 					<div className="inputArea">
-						<input type="text"/>
-						<button>Procurar</button>
+						<input type="text" value={searchTermTemp} onChange={(e) => setSearchTermTemp(e.target.value)}
+                  			placeholder="Pesquisar álbuns e faixas..." />
+						<button onClick={handleSearchClick}>Procurar</button>
 					</div>
 				</div>
 				<div className="addAlbumModal" style={addAlbumModal ? {display: "flex"} : {display: "none"}}>
@@ -65,8 +88,8 @@ const Home = () => {
 				<div className="addPlaylistButton" onClick={() => setAddAlbumModal(true)}>
 					<IoMdAddCircle />
 				</div>
-				{albumData ? (
-			      albumData.map((item, index) => (
+				{filteredAlbumData  ? (
+			      filteredAlbumData.map((item, index) => (
 			        <Albuns album={item} key={index} albumData={albumData} setAlbumData={setAlbumData}/>
 			      ))
 			    ) : (

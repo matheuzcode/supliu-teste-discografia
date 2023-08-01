@@ -6,7 +6,7 @@ import Faixas from '../../components/Faixas/Faixas.jsx'
 import Api from '../../Api.js'
 import {useState} from 'react';
 
-const Albuns = ({album, index, albumData, setAlbumData}) => {
+const Albuns = ({album, index, setAlbumData}) => {
 	const [addTrackModal, setAddTrackModal] = useState(false);
 	const [newTrackName, setNewTrackName] = useState('');
 	const [newTrackDuration, setNewTrackDuration] = useState('');
