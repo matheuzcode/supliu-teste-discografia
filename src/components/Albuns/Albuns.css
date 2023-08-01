@@ -20,7 +20,7 @@
 	background-color: #b5b5b5a8;
 }
 
-.deleteTrackIcon{
+.deleteAlbumIcon{
 	font-size: 20px;
     background-color: #b5b5b56b;
     border-radius: 50%;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.deleteTrackIcon:hover{
+.deleteAlbumIcon:hover{
 	background-color: #b5b5b5a8;
 }
 
@@ -40,26 +40,13 @@
     gap: 10px;
 }
 
-.col-1, .col-2{
+.col-1{
 	color: #333232;
 }
 
 .col-1 {
 	display: grid;
     grid-template-columns: 1fr 12fr 1fr;
-}
-
-.col-2 {
-	display: grid;
-    grid-template-columns: 1fr 12fr 1fr 1fr;
-    align-items: center;
-    transition: background-color ease 0.2s;
-    padding: 3px;
-    cursor: pointer;
-}
-
-.col-2:hover{
-	background-color: #70707038;
 }
 
 .trackDelete{
@@ -73,7 +60,7 @@
 	color: #cd2323;;
 }
 
-.addAlbumModal{
+.addTrackModal{
 	display: flex;
     flex-direction: column;
     position: absolute;
@@ -87,13 +74,13 @@
     box-shadow: 0px 5px 9px 0px #6e6e6e85;
 }
 
-.addAlbumModal input {
+.addTrackModal input {
 	padding: 10px;
     outline: none;
     border: solid 1px #4A90E2;
 }
 
-.addAlbumModal button {
+.addTrackModal button {
 	width: 86px;
     padding: 9px;
     border: none;

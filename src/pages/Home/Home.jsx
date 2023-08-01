@@ -19,7 +19,6 @@ const Home = () => {
       try {
         const albumData = await Api.getAlbum();
         setAlbumData(albumData);
-        console.log(albumData)
       } catch (error) {
         // Tratar erro, se necessário
         console.error(error.message);
@@ -68,7 +67,7 @@ const Home = () => {
 				</div>
 				{albumData ? (
 			      albumData.map((item, index) => (
-			        <Albuns album={item} key={index} />
+			        <Albuns album={item} key={index} albumData={albumData} setAlbumData={setAlbumData}/>
 			      ))
 			    ) : (
 			      <div>Carregando...</div>

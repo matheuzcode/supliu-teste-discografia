@@ -1,0 +1,16 @@
+.col-2 {
+	display: grid;
+    grid-template-columns: 1fr 12fr 1fr 1fr;
+    align-items: center;
+    transition: background-color ease 0.2s;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.col-2{
+    color: #333232;
+}
+
+.col-2:hover{
+	background-color: #70707038;
+}

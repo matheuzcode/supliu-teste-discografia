@@ -30,6 +30,7 @@
 }
 
 .albumsSection {
+	position: relative;
 	background-color: #ffffffa6;
 	padding-bottom: 25px;
 	height: 650px;
