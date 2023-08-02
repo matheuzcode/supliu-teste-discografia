@@ -44,7 +44,7 @@ const url = 'https://tiao.supliu.com.br/api/album';
     }
 
     const data = await response.json();
-    console.log('Resposta da API:', data);
+   
     return data; 
   } catch (error) {
     console.error('Erro na requisição:', error.message);

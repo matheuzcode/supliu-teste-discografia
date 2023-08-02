@@ -48,7 +48,7 @@ const Home = () => {
 	      const albumMatches = album.name.toLowerCase().includes(searchTerm.toLowerCase());
 
 	      // Filtra as faixas
-	      const tracksMatches = album.tracks.some((track) =>
+	      const tracksMatches = album.tracks && album.tracks.some((track) =>
 	        track.title.toLowerCase().includes(searchTerm.toLowerCase())
 	      );
 
